@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+
+<body>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <h1>Login</h1>
+    <form method="post" action="/">
+        <p>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+        </p>
+        <p>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </p>
+        <p>
+            <input type="submit" value="Login">
+            <a href="/signup"><button type="button">Sign Up</button></a>
+        </p>
+    </form>
+</body>
+
+</html>
