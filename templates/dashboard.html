@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .wrapper {
+        display: flex;
+    }
+
+    .sidebar {
+        background-color: #f1f1f1;
+        width: 250px;
+        padding: 20px;
+    }
+
+    .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li a {
+        display: block;
+        padding: 10px;
+        color: #333;
+        text-decoration: none;
+    }
+
+    .sidebar li a:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .main-content {
+        flex: 1;
+        padding: 20px;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <h1>Dashboard</h1>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Welcome to your Dashboard!</h2>
+            <p>This is where you can view your website's analytics, generate reports, and change your settings.</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -21,13 +21,13 @@ def signup():
 
         # Check if user already exists
         if db.users.find_one({'email': email}):
-            return 'User already exists'
+            return 'Email is already exists'
 
         # Insert user data into database
         db.users.insert_one(
             {'name': name, 'email': email, 'password': password})
 
-        return 'Sign up successful'
+        return render_template('dashboard.html')
 
     # Render sign-up page
     return render_template('signup.html')
@@ -35,7 +35,7 @@ def signup():
 
 @app.route("/dashboard")
 def dashboard():
-    return 'Welcome to Dashboard'
+    return render_template('dashboard.html')
 
 
 @app.route("/", methods=['GET', 'POST'])
