@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from pymongo import MongoClient
 
 app = Flask(__name__)
+app.secret_key = 'mysecretkey'
 
 # Set up database connection
 client = MongoClient(
@@ -35,7 +36,10 @@ def signup():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template('dashboard.html')
+    if 'email' in session:
+        return render_template('dashboard.html')
+    else:
+        return redirect(url_for('login'))
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -47,6 +51,7 @@ def login():
         user = db.users.find_one({'email': email})
         if user:
             if user['password'] == password:
+                session['email'] = email
                 return redirect(url_for('dashboard'))
             else:
                 error = 'Invalid Credentials. Please try again.'
@@ -55,4 +60,11 @@ def login():
     return render_template('login.html', error=error)
 
 
-app.run(host="localhost", port=5000)
+@app.route("/logout")
+def logout():
+    session.pop('email', None)
+    return redirect(url_for('login'))
+
+
+if __name__ == '__main__':
+    app.run(host="localhost", port=5000)
